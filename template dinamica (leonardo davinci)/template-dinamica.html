@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<title>presentacion dinamica</title>
+<meta name="description" content="usamos div anidados y pseudo clase :target para reacionar cno los mismos" />
+<meta name="author" content="Fernando Palacios Landi" />
+<link type="text/css" rel="stylesheet" href="css/main.css"/>
+<!--[if lt IE 9]>
+   <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+   <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+<![endif]-->
+</head>
+
+<body>
+<!--[if lt IE 7]>
+   <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+<header id="titulo">
+	<h1>la vida &amp; epoca de leonardo da vinci</h1>
+</header>
+
+<section id="visor">
+	<!-- Target divs -->
+	<div id="cargarPanel1">
+	<div id="cargarPanel2">
+	<div id="cargarPanel3">
+	<div id="cargarPanel4">
+	<div id="cargarPanel5">
+	<div id="cargarPanel6">
+	<!-- Todos los paneles -->
+	<div id="paneles">
+		<article id="panel1">
+			<div class="info">
+				<h2>The Great Leonardo</h2>
+				<p>Leonardo Da Vinci was one of history's greats; a true polymath with interests as diverse as art, mechanics, anatomy and the science of flight.</p>
+				<p><a href="#cargarPanel2">Read more about his unique insights</a> that remain as relevent today as they were over 500 years ago</p>
+			</div>
+		</article>
+		<article id="panel2">
+			<div class="info">
+				<h2>World famous artist</h2>
+				<p>Without a doubt one of the most famous paintings in the world, The Mona Lisa was painted some time between 1503 and 1519. It is now housed permanently in the Louvre Museum, Paris.</p>
+				<p><a href="#cargarPanel3">Leonardo was well known as an artist in his day, but that was just one aspect of his life's work</a>.</p>
+			</div>
+			<img class="MonaLisa" src="img/monalisa.png" alt="The Mona Lisa" />
+		</article>
+		<article id="panel3">
+			<div class="info">
+				<h2>Fantastical Flying Machines</h2>
+				<p>Leonardo was fascinated by the idea of human flight, and over his lifetime he sketched numerous machines with the aim of self-powered flight. In recent times, some of his less fanciful machines have been built and shown to be sound from an engineering perspective.</p>
+				<p><a href="#cargarPanel4">Read more about Da Vinci's capacity for understanding science and nature</a>.</p>
+
+			</div>
+		</article>
+		<article id="panel4">
+			<div class="info">
+				<h2>Anatomy and Nature</h2>
+				<p>Da Vinci harboured a great desire to discover what made nature work, and his work with the anatomy of the human body, along with disections of animals and plant studies, demonstrate an amazing degree of understanding. The most famous result of this interest is the Vitruvian Man.</p>
+				<p><a href="#cargarPanel5">Read more about Cartography</a>.</p>
+			</div>
+		</article>
+		<article id="panel5">
+			<div class="info">
+				<h2>Mapping his world</h2>
+				<p>As well as the fascination with machines and nature, Leonardo wanted to document and understand the topography of his world. He developed an extensive set of maps, demonstrating real skill as a cartographer.</p>
+				<p><a href="#cargarPanel6">Read more about Leonardo's inventions</a>.</p>
+			</div>
+		</article>
+		<article id="panel6">
+			<div class="info">
+				<h2>Incredible Inventions</h2>
+				<p>With such a diverse set of skills, it's little wonder that Leonardo Da Vinci was responsible for some amazing inventions including instruments of war, water displacement devices and of course his flying machines.</p>
+				<p><a href="#cargarPanel1">Return to the introduction</a>.</p>
+			</div>
+		</article>
+	</div>
+	<!-- Fin de Paneles -->
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<!-- Fin Target divs -->
+</section>
+
+<!-- Navegacion a traves de los Divs -->
+<div id="nav">
+	<ul>
+		<li><a href="#cargarPanel1">1</a></li>
+		<li><a href="#cargarPanel2">2</a></li>
+		<li><a href="#cargarPanel3">3</a></li>
+		<li><a href="#cargarPanel4">4</a></li>
+		<li><a href="#cargarPanel5">5</a></li>
+		<li><a href="#cargarPanel6">6</a></li>
+	</ul>
+</div>
+<!-- FOOTER
+-------------------------------->
+<footer id="footer">
+	<div id="autor-footer">
+		<h3>Acerca del Autor</h3>
+		<address>
+			Escrita por: <a rel="author" href="mailto:fernandopalacioslandi@gmail.com">Mail Nando</a><br/>
+			Pagina Web: <a rel="author" href="http://www.cruzalosdedos.es/">Web Nando</a><br/>
+			Repositorio Web: <a rel="author" href="https://github.com/fernandoPalaciosGit/">Github Nando</a><br/>
+			Direccion Local: <q>C/ Mateo Fiol n&ordm;68 - Baleares - <abbr title="españa">ES</abbr></q>
+		</address>
+	</div>
+	<small>&copy; <a rel="licence" href="http://creativecommons.org/licenses/by/2.0/">copyleft</a> 2013</small>
+</footer>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+$listasNav = $("#nav ul li");
+$enlacesNav = $("#nav ul li a");
+$enlacesNav.on("mouseover", function(){
+	$(this).css({
+		"color": "rgba(0,0,0,0.5)",
+		"font-size":	"1.7rem"
+	});
+	$(this).parent("li").css({
+		"box-shadow": "inset 2px 2px 5px #000",
+		"background":	"rgba(150,150,150,0.7)"
+	});
+});
+$enlacesNav.on("mouseout", function(){
+	$(this).css({
+		"color": "rgba(255,255,255,1.0)",
+		"font-size":	"1.3rem"
+	});
+	$(this).parent("li").css({
+		"box-shadow": "2px 2px 5px #000",
+		"background":	"rgba(0,0,0,0.7)"
+	});
+});
+</script>
+</body>
+</html>

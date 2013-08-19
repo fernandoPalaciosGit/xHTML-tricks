@@ -1,0 +1,252 @@
+@CHARSET "UTF-8";
+/*PREDETERMINADO
+------------------------------*/
+article,aside,section,footer,header,div,figcaption,
+figure,hgroup,nav, li
+{
+    display:block;
+}
+html
+{
+	font-size: 16px;
+	color: #4C4C4C;
+}
+body
+{
+	position: relative;
+	margin:0px auto;
+	padding: 0px auto;
+	cursor: auto;
+	width: 100%;
+	height: 100%;
+	background:	url(../img/containerbg.png) no-repeat center center fixed,
+					url(../img/pagebg.jpg) repeat top left;
+	font-size: 1rem;
+}
+a, a:LINK, a:VISITED, a:HOVER
+{
+	text-decoration: none;
+}
+ul
+{
+	margin: 0 0;
+	padding: 0 0;
+}
+li
+{
+	display: inline-block;
+	margin: 0px auto;
+	padding: 6px 12px;
+	text-align: center;
+	list-style-type: none;
+}
+h1, h2
+{
+	margin: 0;
+	padding: 0;
+}
+#footer
+{
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+}
+#titulo{
+	position:	relative;
+	width:		700px;
+	height:		190px;
+	margin:		0 auto;
+	text-indent:-9999px;/*ocultamos el texto pero no lo hacemos desaparecer porque contiene un H1*/
+	overflow:	hidden;
+	background: transparent url(../img/title.png) no-repeat top left;
+}
+#visor
+{
+	position: relative;
+	width: 890px;/*resto 10px al ancho/alto para que encajen bien el diseño  ninteractivo de los lienzos*/
+	height: 440px;
+	margin: 0 auto;
+	overflow: hidden;
+	border: 10px solid black;
+	box-shadow:5px 5px 10px rgba(0,0,0,0.5);
+	border-radius:5px 5px 5px 5px;
+	background:	white url(../img/pagebg.jpg) repeat top left;
+}
+/*el contenedor de todos los paneles tiene W/H=0,
+para que cada panel se amplie y ocupe el ancho del visor*/
+/*si le pusieramos anchura o altura, las transformaciones
+de cada panel dejarian de funcionar*/
+#visor #paneles
+{
+	position: absolute;
+	width: 0;
+	height: 0;
+	background-color: white;
+}
+#visor #paneles article[id^="panel"]
+{
+	position: absolute;
+	/*le restamos 20 px por el borde de su contenedor #visor*/
+	width: 880px;
+	height: 430px;
+	overflow: hidden;
+	padding: 10px;
+}
+/*distribuimos los paneles hasta quedar con un diseño en colage,
+sin que se solapen los paneles*/
+#visor #paneles #panel1
+{
+	top:		0px;
+	left:		0px;
+	background:	yellow url(../img/panel1.png) no-repeat top left;
+}
+#visor #paneles #panel2
+{
+	top:		450px;
+	left:		0px;
+	background:	blue url(../img/panel2.png) no-repeat top left;
+}
+#visor #paneles #panel3
+{
+	top:		0px;
+	left:		900px;
+	-webkit-transform: rotate(90deg) translateY(225px) translateX(215px);
+	-moz-transform: rotate(90deg) translateY(225px) translateX(215px);
+	-ms-transform: rotate(90deg) translateY(225px) translateX(215px);
+	background:	red url(../img/panel3.png) no-repeat top left;
+}
+#visor #paneles #panel4
+{
+	top:		900px;
+	left:		0px;
+	background:	green url(../img/panel4.png) no-repeat top left;
+}
+#visor #paneles #panel5
+{
+	top:		400px;
+	left:		900px;
+	background:	purple url(../img/panel5.png) no-repeat top left;
+	-webkit-transform: rotate(90deg) translateY(225px) translateX(725px);
+	-moz-transform: rotate(90deg) translateY(225px) translateX(725px);
+	-ms-transform: rotate(90deg) translateY(225px) translateX(725px);
+}
+#visor #paneles #panel6
+{
+	top:		1350px;
+	left:		0px;
+	background:	orange url(../img/panel6.png) no-repeat top left;
+}
+/*posicionamos cada uno de los paneles desde la apertura del visor,
+añadiendo :target como un evento de ratosn sobre los hiperenlaces*/
+#visor #cargarPanel1:target #paneles
+{
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	-ms-transform: translateY(0px);
+}
+#visor #cargarPanel2:target #paneles{
+	-webkit-transform:  translateY(-450px);
+	-moz-transform:  translateY(-450px);
+	-ms-transform:  translateY(-450px);
+}
+#visor #cargarPanel3:target #paneles{
+	-webkit-transform:  translateY(1350px) translateX(0px) rotate(-90deg);
+	-moz-transform:  translateY(1350px) translateX(0px) rotate(-90deg);
+	-ms-transform:  translateY(1350px) translateX(0px) rotate(-90deg);
+}
+#visor #cargarPanel4:target #paneles{
+	-webkit-transform:  translateY(-900px);
+	-moz-transform:  translateY(-900px);
+	-ms-transform:  translateY(-900px);
+}
+#visor #cargarPanel5:target #paneles{
+	-webkit-transform:  translateY(1350px) translateX(-900px) rotate(-90deg);
+	-moz-transform:  translateY(1350px) translateX(-900px) rotate(-90deg);
+	-ms-transform:  translateY(1350px) translateX(-900px) rotate(-90deg);
+}
+#visor #cargarPanel6:target #paneles{
+	-webkit-transform:  translateY(-1350px);
+	-moz-transform:  translateY(-1350px);
+	-ms-transform:  translateY(-1350px);
+}
+/*animamos la seccion del visor para los paneles
+de manera que cuando haya algun cambio de clase (TARGET),
+este lo desplaze suavemente
+*/
+#visor #paneles/*SE REPITE*/
+{
+	-webkit-transition: all 3s ease-out;
+	-moz-transition: all 3s ease-out;
+	-ms-transition: all 3s ease-out;
+}
+/*NAVEGACION por paneles interactivos*/
+#nav {
+	position:	relative;
+	width:		900px;
+	margin:		20px auto;
+	text-align:	center;
+}
+#nav ul li
+{
+	width:		30px;
+	height:		30px;
+	margin: 15px;
+	text-align: center;
+	box-shadow: 2px 2px 5px #000;
+	background:	rgba(0,0,0,0.7);
+	border-radius: 50%;
+	border:		1px solid #000;
+}
+#nav ul li a
+{
+	font-size:	1.3rem;
+	line-height: 2rem;
+	font-weight:	bold;
+	color:			white;
+}
+/*INFORMACION DE PANELES*/
+.info {
+	position:	absolute;
+	top:		80px;
+	left:		30px;
+	text-align: justify;
+
+	width:		300px;
+	padding:	10px;
+	background:	#1c0000;
+	color:		white;
+	box-shadow:	0px 0px 10px #333;
+}
+
+.info h2 {
+	text-transform:uppercase;
+	font-size:	1.4em;
+	font-weight:normal;
+}
+
+.info p {
+	font-size:	1.1em;
+	line-height:1.5em;
+}
+
+.info p a {
+	color:		#f7eed7;
+}
+/*TRANSICION MONA LISA*/
+.MonaLisa {
+	position:	absolute;
+	top:		0;
+	right:		0;
+	margin-right:-700px;
+	-webkit-transition: all 4s ease-out;
+	-moz-transition: all 4s ease-out;
+	-ms-transition: all 4s ease-out;
+}
+
+#cargarPanel2:target .MonaLisa {
+	margin-right:	20px;
+	margin-top:		-20px;
+	-webkit-transform: scale(0.8) rotate(-10deg);
+	-moz-transform: scale(0.8) rotate(-10deg);
+	-ms-transform: scale(0.8) rotate(-10deg);
+}
